@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Gospel of the Lost Chapters</title>
+    <style>
+        :root {
+            --bg-color: #0a0a0a;
+            --text-main: #eaeaea;
+            --text-muted: #555555;
+            --accent: #888888;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Courier New', Courier, monospace; /* Mechanical, archival feel */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 800px;
+            padding: 40px;
+            opacity: 0;
+            animation: fadeIn 3s forwards;
+            animation-delay: 1.5s; /* The forced "Gap" before rendering */
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-weight: normal;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-style: italic;
+            margin-bottom: 60px;
+        }
+
+        .sequence-container {
+            margin-bottom: 60px;
+            font-size: 0.85rem;
+            color: var(--accent);
+            letter-spacing: 2px;
+            line-height: 2;
+        }
+
+        .sequence-step {
+            display: inline-block;
+            opacity: 0;
+            animation: sequenceFade 1s forwards;
+        }
+
+        /* Automating the sequence fade-in to mimic the framework */
+        .step-1 { animation-delay: 2.5s; }
+        .step-2 { animation-delay: 3.5s; }
+        .step-3 { animation-delay: 4.5s; }
+        .step-4 { animation-delay: 5.5s; }
+        .step-5 { animation-delay: 6.5s; }
+        .step-6 { animation-delay: 7.5s; }
+
+        .table-of-books {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: left;
+            display: inline-block;
+            border-left: 1px solid var(--text-muted);
+            padding-left: 30px;
+        }
+
+        .table-of-books li {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            opacity: 0.8;
+            transition: opacity 0.3s, transform 0.3s;
+            cursor: pointer;
+        }
+
+        .table-of-books li:hover {
+            opacity: 1;
+            transform: translateX(5px);
+            color: #ffffff;
+        }
+
+        .footer-note {
+            margin-top: 80px;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        @keyframes sequenceFade {
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>The Gospel of the Lost Chapters</h1>
+        <p class="subtitle">These chapters were not lost by accident.</p>
+
+        <div class="sequence-container">
+            <span class="sequence-step step-1">STATE</span> &rarr;
+            <span class="sequence-step step-2">PERCEPTION</span> &rarr;
+            <span class="sequence-step step-3">FORMATION</span> &rarr;
+            <span class="sequence-step step-4">DECISION</span> &rarr;
+            <span class="sequence-step step-5">EXPERIENCE</span> &rarr;
+            <span class="sequence-step step-6">REALITY</span>
+        </div>
+
+        <ul class="table-of-books">
+            <li>The Book of State</li>
+            <li>The Book of Perception</li>
+            <li>The Book of Formation</li>
+            <li>The Book of Decision</li>
+            <li>The Book of Experience</li>
+            <li>The Book of Reality</li>
+            <li>The Book of Source</li>
+            <li>The Book of Curiosity</li>
+        </ul>
+
+        <div class="footer-note">
+            The framework is the lamp.<br>Not the destination.
+        </div>
+    </div>
+
+</body>
+</html>
+
+
