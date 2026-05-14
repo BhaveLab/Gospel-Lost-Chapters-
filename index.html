@@ -1,77 +1,767 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Gospel: Lost Chapters</title>
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230a0b0c'/%3E%3CradialGradient id='o' cx='50%25' cy='50%25' r='50%25'%3E%3Cstop offset='0%25' stop-color='%23f0c060'/%3E%3Cstop offset='40%25' stop-color='%23c8860a'/%3E%3Cstop offset='100%25' stop-color='%233a2000' stop-opacity='0'/%3E%3C/radialGradient%3E%3Ccircle cx='16' cy='16' r='14' fill='url(%23o)' opacity='.9'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%23f5d070' opacity='.6'/%3E%3C/svg%3E">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23080a10'/%3E%3CradialGradient id='o' cx='50%25' cy='50%25' r='50%25'%3E%3Cstop offset='0%25' stop-color='%23f0c060'/%3E%3Cstop offset='40%25' stop-color='%23c8860a'/%3E%3Cstop offset='100%25' stop-color='%233a2000' stop-opacity='0'/%3E%3C/radialGradient%3E%3Ccircle cx='16' cy='16' r='14' fill='url(%23o)' opacity='.9'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%23f5d070' opacity='.6'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Cormorant+SC:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-    :root { --parchment: #dcd0c0; --shadow: #0a0b0c; --accent: #7a7369; }
-    body { margin:0; padding:0; background-color:var(--shadow); background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E"); color:var(--parchment); font-family:'Palatino Linotype','Book Antiqua',Palatino,serif; text-align:center; overflow-x:hidden; cursor:default; }
-    .lamp-glow { position:fixed; top:0; left:0; width:100vw; height:100vh; background:radial-gradient(circle 350px at var(--x,50%) var(--y,50%),rgba(220,208,192,0.08) 0%,transparent 80%); pointer-events:none; z-index:999; }
-    @media(hover:none){.lamp-glow{background:radial-gradient(circle 60vw at 50% 40%,rgba(220,208,192,0.06) 0%,transparent 80%);}}
-    .container { max-width:700px; margin:0 auto; padding:100px 20px; position:relative; z-index:10; }
-    h1 { font-size:2rem; letter-spacing:5px; font-weight:normal; text-transform:uppercase; margin-bottom:20px; color:rgba(220,208,192,0.8); }
-    .lamp-quote { font-size:0.9rem; font-style:italic; color:var(--accent); margin-bottom:80px; letter-spacing:1px; }
-    .the-crack-container { position:relative; height:120px; margin:60px auto; width:100%; display:flex; justify-content:center; align-items:center; }
-    .the-crack { width:1px; height:80px; background:rgba(220,208,192,0.1); transform:rotate(12deg); cursor:crosshair; transition:all 0.8s ease; }
-    .the-crack:hover,.the-crack.touched { height:120px; background:rgba(220,208,192,0.3); }
-    .crack-text { position:absolute; opacity:0; font-size:0.85rem; color:var(--accent); transition:opacity 1.5s ease; pointer-events:none; letter-spacing:1px; top:50%; transform:translateY(-50%); width:100%; }
-    .the-crack:hover + .crack-text,.the-crack.touched + .crack-text { opacity:1; }
-    .table-of-books { list-style:none; padding:0; margin:0 auto 60px auto; text-align:left; display:inline-block; border-left:1px solid rgba(220,208,192,0.1); padding-left:40px; }
-    .table-of-books li { margin-bottom:25px; font-size:1.2rem; opacity:0.5; transition:opacity 0.5s,transform 0.5s; cursor:pointer; letter-spacing:2px; -webkit-tap-highlight-color:transparent; }
-    .table-of-books li:hover,.table-of-books li:active { opacity:1; transform:translateX(10px); }
-    .inquiry-link { display:block; text-align:center; margin-bottom:100px; color:var(--accent); text-decoration:none; letter-spacing:3px; font-size:0.85rem; text-transform:uppercase; transition:color 0.4s; }
-    .inquiry-link:hover { color:var(--parchment); }
-    .exchange-section { margin-top:100px; padding-top:80px; border-top:1px solid rgba(220,208,192,0.05); }
-    .exchange-title { font-size:1.2rem; letter-spacing:4px; text-transform:uppercase; margin-bottom:15px; }
-    .exchange-quote { font-size:0.85rem; color:var(--accent); max-width:500px; margin:0 auto 50px auto; line-height:1.8; }
-    .provision-item { margin-bottom:40px; }
-    .provision-item h3 { font-weight:normal; font-size:1.1rem; margin-bottom:15px; }
-    .exchange-btn { background:transparent; color:var(--parchment); border:1px solid rgba(220,208,192,0.3); padding:10px 30px; font-family:'Palatino Linotype',serif; font-size:0.9rem; letter-spacing:2px; text-transform:uppercase; cursor:pointer; transition:all 0.4s; }
-    .exchange-btn:hover,.exchange-btn:active { background:rgba(220,208,192,0.05); border-color:var(--parchment); }
-    #the-gap-overlay { position:fixed; top:0; left:0; width:100vw; height:100vh; background-color:#000; color:var(--accent); display:flex; justify-content:center; align-items:center; opacity:0; pointer-events:none; transition:opacity 0.5s ease; z-index:9999; padding:20px; box-sizing:border-box; }
-    #the-gap-overlay.active { opacity:1; pointer-events:all; }
-    #the-gap-text { font-style:italic; letter-spacing:2px; opacity:0; transition:opacity 1s ease; max-width:400px; line-height:1.8; text-align:center; }
-    #the-gap-overlay.active #the-gap-text { opacity:1; transition-delay:0.5s; }
+
+/* ─── VARIABLES ─────────────────────────────────────────── */
+:root {
+–bg:        #080a10;
+–ivory:     #f0ebe0;
+–ivory-dim: #9a9080;
+–red:       #8B1818;
+–red-glow:  rgba(139,24,24,0.15);
+–gold:      #c8900a;
+–gold-soft: rgba(200,144,10,0.18);
+–rule:      rgba(240,235,224,0.07);
+–margin-w:  2px;
+}
+
+/* ─── RESET & BASE ──────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+background-color: var(–bg);
+color: var(–ivory);
+font-family: ‘Cormorant Garamond’, Georgia, serif;
+font-weight: 300;
+overflow-x: hidden;
+cursor: crosshair;
+min-height: 100vh;
+}
+
+/* Grain overlay */
+body::before {
+content: ‘’;
+position: fixed;
+inset: 0;
+background-image: url(“data:image/svg+xml,%3Csvg viewBox=‘0 0 512 512’ xmlns=‘http://www.w3.org/2000/svg’%3E%3Cfilter id=‘n’%3E%3CfeTurbulence type=‘fractalNoise’ baseFrequency=‘0.75’ numOctaves=‘4’ stitchTiles=‘stitch’/%3E%3C/filter%3E%3Crect width=‘100%25’ height=‘100%25’ filter=‘url(%23n)’ opacity=‘0.03’/%3E%3C/svg%3E”);
+pointer-events: none;
+z-index: 1000;
+opacity: 0.6;
+}
+
+/* ─── LAMP ──────────────────────────────────────────────── */
+.lamp {
+position: fixed;
+inset: 0;
+background: radial-gradient(
+ellipse 500px 400px at var(–x, 50%) var(–y, 50%),
+rgba(200,144,10,0.04) 0%,
+rgba(139,24,24,0.03) 40%,
+transparent 70%
+);
+pointer-events: none;
+z-index: 998;
+transition: background 0.1s linear;
+}
+@media(hover:none){
+.lamp { background: radial-gradient(ellipse 70vw 60vw at 50% 35%, rgba(200,144,10,0.04) 0%, transparent 70%); }
+}
+
+/* ─── LEFT MARGIN RULE ──────────────────────────────────── */
+.margin-rule {
+position: fixed;
+left: clamp(20px, 5vw, 80px);
+top: 0;
+bottom: 0;
+width: var(–margin-w);
+background: linear-gradient(to bottom,
+transparent 0%,
+var(–rule) 15%,
+var(–rule) 85%,
+transparent 100%
+);
+z-index: 10;
+}
+
+/* ─── CONTAINER ─────────────────────────────────────────── */
+.wrap {
+max-width: 760px;
+margin: 0 auto;
+padding: 0 40px 160px clamp(40px, 8vw, 100px);
+position: relative;
+z-index: 10;
+}
+
+/* ─── LOAD ANIMATION ────────────────────────────────────── */
+.reveal {
+opacity: 0;
+transform: translateY(16px);
+animation: rise 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+@keyframes rise {
+to { opacity: 1; transform: none; }
+}
+.d1  { animation-delay: 0.1s; }
+.d2  { animation-delay: 0.35s; }
+.d3  { animation-delay: 0.6s; }
+.d4  { animation-delay: 0.85s; }
+.d5  { animation-delay: 1.1s; }
+.d6  { animation-delay: 1.35s; }
+.d7  { animation-delay: 1.55s; }
+
+/* ─── HEADER ────────────────────────────────────────────── */
+header {
+padding-top: clamp(80px, 14vh, 140px);
+padding-bottom: 70px;
+border-bottom: 1px solid var(–rule);
+}
+
+.eyebrow {
+font-family: ‘Cormorant SC’, serif;
+font-size: 0.7rem;
+letter-spacing: 6px;
+color: var(–red);
+margin-bottom: 24px;
+display: block;
+}
+
+.title-main {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: clamp(3.4rem, 8vw, 6.5rem);
+font-weight: 300;
+line-height: 0.92;
+color: var(–ivory);
+letter-spacing: -0.01em;
+margin-bottom: 16px;
+}
+
+.title-sub {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: clamp(1rem, 2.5vw, 1.4rem);
+font-weight: 300;
+font-style: italic;
+color: var(–ivory-dim);
+letter-spacing: 0.08em;
+margin-bottom: 40px;
+}
+
+.header-quote {
+font-size: clamp(0.85rem, 1.5vw, 1rem);
+font-style: italic;
+color: var(–ivory-dim);
+line-height: 1.7;
+max-width: 480px;
+border-left: 1px solid var(–red);
+padding-left: 20px;
+opacity: 0.7;
+}
+
+/* ─── CRACK ─────────────────────────────────────────────── */
+.crack-section {
+padding: 60px 0 50px;
+display: flex;
+align-items: center;
+gap: 30px;
+}
+
+.crack-line {
+width: 1px;
+height: 60px;
+background: linear-gradient(to bottom, transparent, var(–ivory-dim), transparent);
+transform: rotate(8deg);
+cursor: crosshair;
+transition: all 0.9s ease;
+flex-shrink: 0;
+}
+.crack-line:hover, .crack-line.touched {
+height: 90px;
+background: linear-gradient(to bottom, transparent, var(–ivory), transparent);
+}
+
+.crack-text {
+font-size: 0.8rem;
+font-style: italic;
+color: transparent;
+letter-spacing: 1px;
+line-height: 1.6;
+transition: color 1.2s ease;
+}
+.crack-line:hover ~ .crack-text,
+.crack-line.touched ~ .crack-text {
+color: var(–ivory-dim);
+}
+
+/* ─── BOOKS ─────────────────────────────────────────────── */
+.books-section {
+padding: 10px 0 60px;
+}
+
+.books-header {
+font-family: ‘Cormorant SC’, serif;
+font-size: 0.65rem;
+letter-spacing: 6px;
+color: var(–ivory-dim);
+margin-bottom: 40px;
+display: flex;
+align-items: center;
+gap: 20px;
+}
+.books-header::after {
+content: ‘’;
+flex: 1;
+height: 1px;
+background: var(–rule);
+}
+
+.book-list {
+list-style: none;
+border-top: 1px solid var(–rule);
+}
+
+.book-list li {
+border-bottom: 1px solid var(–rule);
+cursor: pointer;
+-webkit-tap-highlight-color: transparent;
+}
+
+.book-list li a,
+.book-list li .book-entry {
+display: flex;
+align-items: baseline;
+gap: 20px;
+padding: 18px 0;
+transition: padding-left 0.4s cubic-bezier(0.16,1,0.3,1);
+text-decoration: none;
+}
+
+.book-list li:hover .book-entry,
+.book-list li:active .book-entry {
+padding-left: 12px;
+}
+
+.book-num {
+font-family: ‘Cormorant SC’, serif;
+font-size: 0.7rem;
+color: var(–red);
+letter-spacing: 2px;
+min-width: 28px;
+opacity: 0.8;
+}
+
+.book-name {
+font-size: clamp(1.1rem, 2.2vw, 1.35rem);
+font-weight: 300;
+color: var(–ivory);
+letter-spacing: 0.04em;
+opacity: 0.65;
+transition: opacity 0.4s;
+}
+
+.book-list li:hover .book-name,
+.book-list li:active .book-name {
+opacity: 1;
+}
+
+.book-arrow {
+margin-left: auto;
+font-size: 0.75rem;
+color: var(–red);
+opacity: 0;
+transition: opacity 0.4s, transform 0.4s;
+transform: translateX(-8px);
+}
+.book-list li:hover .book-arrow {
+opacity: 0.6;
+transform: translateX(0);
+}
+
+/* ─── INQUIRY LINK ──────────────────────────────────────── */
+.inquiry-band {
+margin: 20px 0 80px;
+display: flex;
+align-items: center;
+gap: 20px;
+}
+.inquiry-band::before, .inquiry-band::after {
+content: ‘’;
+flex: 1;
+height: 1px;
+background: var(–rule);
+}
+
+.inquiry-link {
+font-family: ‘Cormorant SC’, serif;
+font-size: 0.7rem;
+letter-spacing: 5px;
+color: var(–ivory-dim);
+text-decoration: none;
+transition: color 0.4s, letter-spacing 0.4s;
+white-space: nowrap;
+}
+.inquiry-link:hover { color: var(–ivory); letter-spacing: 7px; }
+
+/* ─── PROVISION ─────────────────────────────────────────── */
+.provision-section {
+padding-top: 80px;
+border-top: 1px solid var(–rule);
+}
+
+.provision-label {
+font-family: ‘Cormorant SC’, serif;
+font-size: 0.65rem;
+letter-spacing: 6px;
+color: var(–red);
+margin-bottom: 12px;
+display: block;
+}
+
+.provision-quote {
+font-size: clamp(0.85rem, 1.5vw, 1rem);
+font-style: italic;
+color: var(–ivory-dim);
+line-height: 1.8;
+max-width: 420px;
+margin-bottom: 60px;
+opacity: 0.6;
+}
+
+.provision-body {
+display: grid;
+grid-template-columns: auto 1fr;
+gap: 60px;
+align-items: start;
+}
+
+/* ─── 3D BOOK ───────────────────────────────────────────── */
+.book-stage {
+perspective: 900px;
+}
+
+.book-3d {
+width: 148px;
+height: 210px;
+position: relative;
+transform-style: preserve-3d;
+transform: rotateY(-26deg) rotateX(2deg);
+transition: transform 0.7s cubic-bezier(0.16,1,0.3,1);
+filter: drop-shadow(-20px 30px 40px rgba(0,0,0,0.8));
+}
+.book-3d:hover {
+transform: rotateY(-8deg) rotateX(0deg);
+}
+
+.b-cover {
+position: absolute;
+width: 148px;
+height: 210px;
+background: linear-gradient(160deg, #110e0a 0%, #0d0a07 60%, #080604 100%);
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: space-between;
+padding: 16px 12px;
+overflow: hidden;
+}
+
+/* Double border */
+.b-cover::before {
+content: ‘’;
+position: absolute;
+inset: 5px;
+border: 1px solid rgba(180,130,30,0.3);
+pointer-events: none;
+}
+.b-cover::after {
+content: ‘’;
+position: absolute;
+inset: 8px;
+border: 1px solid rgba(180,130,30,0.12);
+pointer-events: none;
+}
+
+/* Corner ornaments */
+.b-corners {
+position: absolute;
+inset: 5px;
+pointer-events: none;
+}
+.b-corners span {
+position: absolute;
+width: 8px;
+height: 8px;
+border-color: rgba(180,130,30,0.35);
+border-style: solid;
+border-width: 0;
+}
+.b-corners span:nth-child(1) { top:0; left:0; border-top-width:1px; border-left-width:1px; }
+.b-corners span:nth-child(2) { top:0; right:0; border-top-width:1px; border-right-width:1px; }
+.b-corners span:nth-child(3) { bottom:0; left:0; border-bottom-width:1px; border-left-width:1px; }
+.b-corners span:nth-child(4) { bottom:0; right:0; border-bottom-width:1px; border-right-width:1px; }
+
+.b-top {
+text-align: center;
+position: relative;
+z-index: 1;
+padding-top: 4px;
+}
+.b-top .bt-the  { display:block; font-size:0.42rem; letter-spacing:5px; color:rgba(200,160,40,0.65); text-transform:uppercase; margin-bottom:1px; font-family:‘Cormorant SC’,serif; }
+.b-top .bt-main { display:block; font-size:1rem; letter-spacing:2px; color:#d4a830; font-weight:400; text-transform:uppercase; font-family:‘Cormorant SC’,serif; text-shadow:0 0 14px rgba(200,140,20,0.4); }
+
+.b-orb {
+width: 64px;
+height: 64px;
+border-radius: 50%;
+background: radial-gradient(circle at 38% 32%,
+#fff8c0 0%,
+#f5d050 10%,
+#e09010 35%,
+#903000 65%,
+#2a0800 85%,
+transparent 100%
+);
+box-shadow:
+0 0 18px rgba(220,160,20,0.55),
+0 0 50px rgba(180,100,10,0.2),
+inset 0 -8px 20px rgba(0,0,0,0.5);
+position: relative;
+flex-shrink: 0;
+z-index: 1;
+}
+.b-orb::after {
+content: ‘’;
+position: absolute;
+inset: -16px;
+border-radius: 50%;
+background: radial-gradient(circle, rgba(200,130,10,0.12) 0%, transparent 70%);
+}
+
+.b-bottom {
+text-align: center;
+position: relative;
+z-index: 1;
+padding-bottom: 4px;
+}
+.b-bottom .bb-rule { display:block; width:30px; height:1px; background:rgba(180,130,30,0.3); margin: 0 auto 5px; }
+.b-bottom .bb-lost { display:block; font-size:0.4rem; letter-spacing:4px; color:rgba(200,160,40,0.55); text-transform:uppercase; font-family:‘Cormorant SC’,serif; }
+.b-bottom .bb-chap { display:block; font-size:0.4rem; letter-spacing:4px; color:rgba(200,160,40,0.55); text-transform:uppercase; font-family:‘Cormorant SC’,serif; margin-top:2px; }
+
+/* Spine */
+.b-spine {
+position: absolute;
+left: -20px;
+top: 0;
+width: 20px;
+height: 210px;
+background: linear-gradient(to right, #040302, #120d08, #0d0a07);
+transform: rotateY(-90deg);
+transform-origin: right center;
+display: flex;
+align-items: center;
+justify-content: center;
+border-left: 1px solid rgba(180,130,30,0.1);
+}
+.b-spine span {
+writing-mode: vertical-rl;
+transform: rotate(180deg);
+font-family: ‘Cormorant SC’, serif;
+font-size: 0.38rem;
+letter-spacing: 3px;
+color: rgba(180,130,30,0.4);
+text-transform: uppercase;
+}
+
+/* Pages */
+.b-pages {
+position: absolute;
+right: -5px;
+top: 4px;
+width: 5px;
+height: 202px;
+background: repeating-linear-gradient(
+to bottom,
+#d4c8a8, #d4c8a8 1px,
+#b8a880 2px
+);
+transform: rotateY(90deg);
+transform-origin: left center;
+}
+
+/* ─── PROVISION ITEMS ───────────────────────────────────── */
+.provision-items { display: flex; flex-direction: column; gap: 36px; padding-top: 8px; }
+
+.p-item-label {
+font-family: ‘Cormorant SC’, serif;
+font-size: 0.62rem;
+letter-spacing: 4px;
+color: var(–ivory-dim);
+display: block;
+margin-bottom: 10px;
+opacity: 0.6;
+}
+
+.p-item-name {
+font-size: clamp(1rem, 1.8vw, 1.2rem);
+font-weight: 300;
+color: var(–ivory);
+margin-bottom: 16px;
+letter-spacing: 0.02em;
+opacity: 0.85;
+}
+
+.p-btn {
+background: transparent;
+border: none;
+border-bottom: 1px solid rgba(240,235,224,0.2);
+padding: 0 0 6px;
+font-family: ‘Cormorant SC’, serif;
+font-size: 0.65rem;
+letter-spacing: 4px;
+color: var(–ivory-dim);
+text-transform: uppercase;
+cursor: crosshair;
+transition: all 0.4s;
+}
+.p-btn:hover { color: var(–ivory); border-bottom-color: var(–gold); letter-spacing: 6px; }
+
+/* ─── GAP OVERLAY ───────────────────────────────────────── */
+#gap {
+position: fixed;
+inset: 0;
+background: #0e0200;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+gap: 20px;
+opacity: 0;
+pointer-events: none;
+transition: opacity 0.6s ease;
+z-index: 9999;
+}
+#gap.open { opacity: 1; pointer-events: all; }
+#gap-line {
+width: 1px;
+height: 0;
+background: rgba(139,24,24,0.6);
+transition: height 0.8s cubic-bezier(0.16,1,0.3,1) 0.3s;
+}
+#gap.open #gap-line { height: 60px; }
+#gap-text {
+font-family: ‘Cormorant Garamond’, serif;
+font-style: italic;
+font-size: clamp(0.9rem, 2vw, 1.1rem);
+letter-spacing: 2px;
+color: rgba(139,24,24,0.7);
+opacity: 0;
+transition: opacity 0.8s ease 0.8s;
+max-width: 360px;
+text-align: center;
+line-height: 1.8;
+}
+#gap.open #gap-text { opacity: 1; }
+
+/* ─── FOOTER ────────────────────────────────────────────── */
+footer {
+margin-top: 120px;
+padding-top: 30px;
+border-top: 1px solid var(–rule);
+display: flex;
+align-items: center;
+gap: 20px;
+}
+footer::after {
+content: ‘✦’;
+font-size: 0.6rem;
+color: var(–red);
+opacity: 0.4;
+flex: 1;
+text-align: right;
+}
+.footer-mark {
+font-family: ‘Cormorant SC’, serif;
+font-size: 0.55rem;
+letter-spacing: 4px;
+color: var(–ivory-dim);
+opacity: 0.25;
+}
+
+/* ─── RESPONSIVE ────────────────────────────────────────── */
+@media(max-width: 560px) {
+.wrap { padding-left: 32px; padding-right: 24px; }
+.provision-body { grid-template-columns: 1fr; justify-items: center; }
+.provision-items { align-items: center; text-align: center; }
+.p-item-label, .p-item-name { text-align: center; }
+}
+
 </style>
 </head>
 <body>
-    <div class="lamp-glow"></div>
-    <div id="the-gap-overlay"><div id="the-gap-text">The thin gap between what arrived and what he would make of it.</div></div>
-    <div class="container">
-        <h1>The Gospel: Lost Chapters</h1>
-        <div class="lamp-quote">The lamp does not change the room. The lamp reveals what the room already contains.</div>
-        <div class="the-crack-container">
-            <div class="the-crack" id="theCrack"></div>
-            <div class="crack-text">The crack was not in the marble.<br>The crack was in the archive.</div>
+
+<div class="lamp" id="lamp"></div>
+<div class="margin-rule"></div>
+
+<div id="gap">
+    <div id="gap-line"></div>
+    <div id="gap-text">The thin gap between what arrived<br>and what he would make of it.</div>
+</div>
+
+<div class="wrap">
+
+```
+<!-- HEADER -->
+<header>
+    <span class="eyebrow reveal d1">Archive · Source Vision</span>
+    <h1 class="title-main reveal d2">The<br>Gospel</h1>
+    <p class="title-sub reveal d3">Lost Chapters</p>
+    <p class="header-quote reveal d4">
+        The lamp does not change the room.<br>
+        The lamp reveals what the room already contains.
+    </p>
+</header>
+
+<!-- CRACK -->
+<div class="crack-section reveal d5">
+    <div class="crack-line" id="crack"></div>
+    <p class="crack-text">The crack was not in the marble.<br>The crack was in the archive.</p>
+</div>
+
+<!-- BOOKS -->
+<section class="books-section reveal d6">
+    <div class="books-header">Contents</div>
+    <ul class="book-list">
+        <li><div class="book-entry" onclick="openGap('state.html')">
+            <span class="book-num">I</span>
+            <span class="book-name">The Book of State</span>
+            <span class="book-arrow">—</span>
+        </div></li>
+        <li><div class="book-entry" onclick="openGap('perception.html')">
+            <span class="book-num">II</span>
+            <span class="book-name">The Book of Perception</span>
+            <span class="book-arrow">—</span>
+        </div></li>
+        <li><div class="book-entry" onclick="openGap('formation.html')">
+            <span class="book-num">III</span>
+            <span class="book-name">The Book of Formation</span>
+            <span class="book-arrow">—</span>
+        </div></li>
+        <li><div class="book-entry" onclick="openGap('decision.html')">
+            <span class="book-num">IV</span>
+            <span class="book-name">The Book of Decision</span>
+            <span class="book-arrow">—</span>
+        </div></li>
+        <li><div class="book-entry" onclick="openGap('experience.html')">
+            <span class="book-num">V</span>
+            <span class="book-name">The Book of Experience</span>
+            <span class="book-arrow">—</span>
+        </div></li>
+        <li><div class="book-entry" onclick="openGap('reality.html')">
+            <span class="book-num">VI</span>
+            <span class="book-name">The Book of Reality</span>
+            <span class="book-arrow">—</span>
+        </div></li>
+        <li><div class="book-entry" onclick="openGap('source.html')">
+            <span class="book-num">VII</span>
+            <span class="book-name">The Book of Source</span>
+            <span class="book-arrow">—</span>
+        </div></li>
+        <li><div class="book-entry" onclick="openGap('curiosity.html')">
+            <span class="book-num">VIII</span>
+            <span class="book-name">The Book of Curiosity</span>
+            <span class="book-arrow">—</span>
+        </div></li>
+    </ul>
+</section>
+
+<!-- INQUIRY -->
+<div class="inquiry-band reveal d7">
+    <a href="inquiry.html" class="inquiry-link">The Inquiry</a>
+</div>
+
+<!-- PROVISION -->
+<section class="provision-section reveal d7">
+    <span class="provision-label">Provision</span>
+    <p class="provision-quote">
+        "Currency is a translation layer. A receipt of exchange.
+        The deeper inquiry is: what State organizes provision in this moment?"
+    </p>
+
+    <div class="provision-body">
+
+        <!-- Book -->
+        <div class="book-stage">
+            <div class="book-3d">
+                <div class="b-spine"><span>The Gospel · Lost Chapters</span></div>
+                <div class="b-pages"></div>
+                <div class="b-cover">
+                    <div class="b-corners">
+                        <span></span><span></span><span></span><span></span>
+                    </div>
+                    <div class="b-top">
+                        <span class="bt-the">The</span>
+                        <span class="bt-main">Gospel</span>
+                    </div>
+                    <div class="b-orb"></div>
+                    <div class="b-bottom">
+                        <span class="bb-rule"></span>
+                        <span class="bb-lost">Lost</span>
+                        <span class="bb-chap">Chapters</span>
+                    </div>
+                </div>
+            </div>
         </div>
-        <ul class="table-of-books">
-            <li onclick="enterGap('state.html')">The Book of State</li>
-            <li onclick="enterGap('perception.html')">The Book of Perception</li>
-            <li onclick="enterGap('formation.html')">The Book of Formation</li>
-            <li onclick="enterGap('decision.html')">The Book of Decision</li>
-            <li onclick="enterGap('experience.html')">The Book of Experience</li>
-            <li onclick="enterGap('reality.html')">The Book of Reality</li>
-            <li onclick="enterGap('source.html')">The Book of Source</li>
-            <li onclick="enterGap('curiosity.html')">The Book of Curiosity</li>
-        </ul>
-        <a href="inquiry.html" class="inquiry-link">The Inquiry</a>
-        <div class="exchange-section">
-            <div class="exchange-title">Provision</div>
-            <div class="exchange-quote">"Currency is a translation layer. A receipt of exchange.<br>The deeper inquiry is: what State organizes provision in this moment?"</div>
-            <div class="provision-item"><h3>The Physical Text</h3><button class="exchange-btn" onclick="window.location.href='#'">Exchange</button></div>
-            <div class="provision-item"><h3>Participant Workbook</h3><button class="exchange-btn" onclick="window.location.href='#'">Exchange</button></div>
+
+        <!-- Items -->
+        <div class="provision-items">
+            <div>
+                <span class="p-item-label">Physical Object</span>
+                <p class="p-item-name">The Gospel: Lost Chapters</p>
+                <button class="p-btn" onclick="window.location.href='#'">Exchange</button>
+            </div>
+            <div>
+                <span class="p-item-label">Companion Text</span>
+                <p class="p-item-name">Participant Workbook</p>
+                <button class="p-btn" onclick="window.location.href='#'">Exchange</button>
+            </div>
         </div>
+
     </div>
-    <script>
-        document.addEventListener('mousemove',(e)=>{document.documentElement.style.setProperty('--x',e.clientX+'px');document.documentElement.style.setProperty('--y',e.clientY+'px');});
-        document.addEventListener('touchmove',(e)=>{const t=e.touches[0];document.documentElement.style.setProperty('--x',t.clientX+'px');document.documentElement.style.setProperty('--y',t.clientY+'px');},{passive:true});
-        const crack=document.getElementById('theCrack');
-        crack.addEventListener('touchstart',()=>{crack.classList.add('touched');},{passive:true});
-        crack.addEventListener('touchend',()=>{setTimeout(()=>crack.classList.remove('touched'),2000);},{passive:true});
-        function enterGap(targetUrl){const o=document.getElementById('the-gap-overlay');o.classList.add('active');setTimeout(()=>{o.classList.remove('active');},3000);}
-    </script>
+</section>
+
+<footer>
+    <span class="footer-mark">The Gospel · Lost Chapters · MMXXVI</span>
+</footer>
+```
+
+</div>
+
+<script>
+    // Lamp
+    document.addEventListener('mousemove', e => {
+        document.documentElement.style.setProperty('--x', e.clientX + 'px');
+        document.documentElement.style.setProperty('--y', e.clientY + 'px');
+    });
+    document.addEventListener('touchmove', e => {
+        const t = e.touches[0];
+        document.documentElement.style.setProperty('--x', t.clientX + 'px');
+        document.documentElement.style.setProperty('--y', t.clientY + 'px');
+    }, { passive: true });
+
+    // Crack — touch
+    const crack = document.getElementById('crack');
+    crack.addEventListener('touchstart', () => crack.classList.add('touched'), { passive: true });
+    crack.addEventListener('touchend', () => setTimeout(() => crack.classList.remove('touched'), 2000), { passive: true });
+
+    // Gap
+    function openGap(url) {
+        const g = document.getElementById('gap');
+        g.classList.add('open');
+        setTimeout(() => {
+            // window.location.href = url; // uncomment when book pages are ready
+            g.classList.remove('open');
+        }, 3200);
+    }
+</script>
+
 </body>
 </html>
