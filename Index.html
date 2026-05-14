@@ -1,150 +1,319 @@
-
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Gospel of the Lost Chapters</title>
-    <style>
-        :root {
-            --bg-color: #0a0a0a;
-            --text-main: #eaeaea;
-            --text-muted: #555555;
-            --accent: #888888;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Gospel: Lost Chapters</title>
+<style>
+    :root {
+        --parchment: #dcd0c0;
+        --shadow: #0a0b0c;
+        --accent: #7a7369;
+    }
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            font-family: 'Courier New', Courier, monospace; /* Mechanical, archival feel */
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            text-align: center;
-            overflow-x: hidden;
-        }
+```
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--shadow);
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
+    color: var(--parchment);
+    font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+    text-align: center;
+    overflow-x: hidden;
+    cursor: default;
+}
 
-        .container {
-            max-width: 800px;
-            padding: 40px;
-            opacity: 0;
-            animation: fadeIn 3s forwards;
-            animation-delay: 1.5s; /* The forced "Gap" before rendering */
-        }
+/* LAMP EFFECT — desktop */
+.lamp-glow {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background: radial-gradient(circle 350px at var(--x, 50%) var(--y, 50%), rgba(220, 208, 192, 0.08) 0%, transparent 80%);
+    pointer-events: none;
+    z-index: 999;
+    transition: background 0.05s linear;
+}
 
-        h1 {
-            font-size: 1.5rem;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            font-weight: normal;
-            margin-bottom: 10px;
-        }
+/* LAMP EFFECT — mobile fallback: soft centered glow */
+@media (hover: none) {
+    .lamp-glow {
+        background: radial-gradient(circle 60vw at 50% 40%, rgba(220, 208, 192, 0.06) 0%, transparent 80%);
+    }
+}
 
-        .subtitle {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            font-style: italic;
-            margin-bottom: 60px;
-        }
+.container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 100px 20px;
+    position: relative;
+    z-index: 10;
+}
 
-        .sequence-container {
-            margin-bottom: 60px;
-            font-size: 0.85rem;
-            color: var(--accent);
-            letter-spacing: 2px;
-            line-height: 2;
-        }
+h1 {
+    font-size: 2rem;
+    letter-spacing: 5px;
+    font-weight: normal;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    color: rgba(220, 208, 192, 0.8);
+}
 
-        .sequence-step {
-            display: inline-block;
-            opacity: 0;
-            animation: sequenceFade 1s forwards;
-        }
+.lamp-quote {
+    font-size: 0.9rem;
+    font-style: italic;
+    color: var(--accent);
+    margin-bottom: 80px;
+    letter-spacing: 1px;
+}
 
-        /* Automating the sequence fade-in to mimic the framework */
-        .step-1 { animation-delay: 2.5s; }
-        .step-2 { animation-delay: 3.5s; }
-        .step-3 { animation-delay: 4.5s; }
-        .step-4 { animation-delay: 5.5s; }
-        .step-5 { animation-delay: 6.5s; }
-        .step-6 { animation-delay: 7.5s; }
+/* THE CRACK */
+.the-crack-container {
+    position: relative;
+    height: 120px;
+    margin: 60px auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-        .table-of-books {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            text-align: left;
-            display: inline-block;
-            border-left: 1px solid var(--text-muted);
-            padding-left: 30px;
-        }
+.the-crack {
+    width: 1px;
+    height: 80px;
+    background: rgba(220, 208, 192, 0.1);
+    transform: rotate(12deg);
+    cursor: crosshair;
+    transition: all 0.8s ease;
+}
 
-        .table-of-books li {
-            margin-bottom: 20px;
-            font-size: 1.1rem;
-            opacity: 0.8;
-            transition: opacity 0.3s, transform 0.3s;
-            cursor: pointer;
-        }
+.the-crack:hover,
+.the-crack:focus,
+.the-crack.touched {
+    height: 120px;
+    background: rgba(220, 208, 192, 0.3);
+}
 
-        .table-of-books li:hover {
-            opacity: 1;
-            transform: translateX(5px);
-            color: #ffffff;
-        }
+.crack-text {
+    position: absolute;
+    opacity: 0;
+    font-size: 0.85rem;
+    color: var(--accent);
+    transition: opacity 1.5s ease;
+    pointer-events: none;
+    letter-spacing: 1px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+}
 
-        .footer-note {
-            margin-top: 80px;
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+.the-crack:hover + .crack-text,
+.the-crack.touched + .crack-text {
+    opacity: 1;
+}
 
-        @keyframes fadeIn {
-            to { opacity: 1; }
-        }
+/* TABLE OF BOOKS */
+.table-of-books {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto 100px auto;
+    text-align: left;
+    display: inline-block;
+    border-left: 1px solid rgba(220, 208, 192, 0.1);
+    padding-left: 40px;
+}
 
-        @keyframes sequenceFade {
-            to { opacity: 1; }
-        }
-    </style>
+.table-of-books li {
+    margin-bottom: 25px;
+    font-size: 1.2rem;
+    opacity: 0.5;
+    transition: opacity 0.5s, transform 0.5s;
+    cursor: pointer;
+    letter-spacing: 2px;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.table-of-books li:hover,
+.table-of-books li:active {
+    opacity: 1;
+    transform: translateX(10px);
+}
+
+/* THE EXCHANGE */
+.exchange-section {
+    margin-top: 100px;
+    padding-top: 80px;
+    border-top: 1px solid rgba(220, 208, 192, 0.05);
+}
+
+.exchange-title {
+    font-size: 1.2rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.exchange-quote {
+    font-size: 0.85rem;
+    color: var(--accent);
+    max-width: 500px;
+    margin: 0 auto 50px auto;
+    line-height: 1.8;
+}
+
+.provision-item {
+    margin-bottom: 40px;
+}
+
+.provision-item h3 {
+    font-weight: normal;
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+}
+
+.exchange-btn {
+    background: transparent;
+    color: var(--parchment);
+    border: 1px solid rgba(220, 208, 192, 0.3);
+    padding: 10px 30px;
+    font-family: 'Palatino Linotype', serif;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.4s;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.exchange-btn:hover,
+.exchange-btn:active {
+    background: rgba(220, 208, 192, 0.05);
+    border-color: var(--parchment);
+}
+
+/* THE GAP OVERLAY */
+#the-gap-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background-color: #000;
+    color: var(--accent);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+    z-index: 9999;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#the-gap-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+#the-gap-text {
+    font-style: italic;
+    letter-spacing: 2px;
+    opacity: 0;
+    transition: opacity 1s ease;
+    max-width: 400px;
+    line-height: 1.8;
+    text-align: center;
+}
+
+#the-gap-overlay.active #the-gap-text {
+    opacity: 1;
+    transition-delay: 0.5s;
+}
+```
+
+</style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>The Gospel of the Lost Chapters</h1>
-        <p class="subtitle">These chapters were not lost by accident.</p>
+```
+<div class="lamp-glow"></div>
 
-        <div class="sequence-container">
-            <span class="sequence-step step-1">STATE</span> &rarr;
-            <span class="sequence-step step-2">PERCEPTION</span> &rarr;
-            <span class="sequence-step step-3">FORMATION</span> &rarr;
-            <span class="sequence-step step-4">DECISION</span> &rarr;
-            <span class="sequence-step step-5">EXPERIENCE</span> &rarr;
-            <span class="sequence-step step-6">REALITY</span>
+<div id="the-gap-overlay">
+    <div id="the-gap-text">The thin gap between what arrived and what he would make of it.</div>
+</div>
+
+<div class="container">
+
+    <h1>The Gospel: Lost Chapters</h1>
+    <div class="lamp-quote">The lamp does not change the room. The lamp reveals what the room already contains.</div>
+
+    <div class="the-crack-container">
+        <div class="the-crack" id="theCrack"></div>
+        <div class="crack-text">The crack was not in the marble.<br>The crack was in the archive.</div>
+    </div>
+
+    <ul class="table-of-books">
+        <li onclick="enterGap('state.html')">The Book of State</li>
+        <li onclick="enterGap('perception.html')">The Book of Perception</li>
+        <li onclick="enterGap('formation.html')">The Book of Formation</li>
+        <li onclick="enterGap('decision.html')">The Book of Decision</li>
+        <li onclick="enterGap('experience.html')">The Book of Experience</li>
+        <li onclick="enterGap('reality.html')">The Book of Reality</li>
+        <li onclick="enterGap('source.html')">The Book of Source</li>
+        <li onclick="enterGap('curiosity.html')">The Book of Curiosity</li>
+    </ul>
+
+    <div class="exchange-section">
+        <div class="exchange-title">Provision</div>
+        <div class="exchange-quote">
+            "Currency is a translation layer. A receipt of exchange.<br>The deeper inquiry is: what State organizes provision in this moment?"
         </div>
 
-        <ul class="table-of-books">
-            <li>The Book of State</li>
-            <li>The Book of Perception</li>
-            <li>The Book of Formation</li>
-            <li>The Book of Decision</li>
-            <li>The Book of Experience</li>
-            <li>The Book of Reality</li>
-            <li>The Book of Source</li>
-            <li>The Book of Curiosity</li>
-        </ul>
+        <div class="provision-item">
+            <h3>The Physical Text</h3>
+            <button class="exchange-btn" onclick="window.location.href='#'">Exchange</button>
+        </div>
 
-        <div class="footer-note">
-            The framework is the lamp.<br>Not the destination.
+        <div class="provision-item">
+            <h3>Participant Workbook</h3>
+            <button class="exchange-btn" onclick="window.location.href='#'">Exchange</button>
         </div>
     </div>
 
+</div>
+
+<script>
+    // Lamp — desktop cursor follow
+    document.addEventListener('mousemove', (e) => {
+        document.documentElement.style.setProperty('--x', e.clientX + 'px');
+        document.documentElement.style.setProperty('--y', e.clientY + 'px');
+    });
+
+    // Lamp — mobile touch follow
+    document.addEventListener('touchmove', (e) => {
+        const touch = e.touches[0];
+        document.documentElement.style.setProperty('--x', touch.clientX + 'px');
+        document.documentElement.style.setProperty('--y', touch.clientY + 'px');
+    }, { passive: true });
+
+    // Crack — mobile touch toggle
+    const crack = document.getElementById('theCrack');
+    crack.addEventListener('touchstart', () => {
+        crack.classList.add('touched');
+    }, { passive: true });
+    crack.addEventListener('touchend', () => {
+        setTimeout(() => crack.classList.remove('touched'), 2000);
+    }, { passive: true });
+
+    // The Gap
+    function enterGap(targetUrl) {
+        const overlay = document.getElementById('the-gap-overlay');
+        overlay.classList.add('active');
+        setTimeout(() => {
+            // window.location.href = targetUrl; // uncomment when book pages are ready
+            overlay.classList.remove('active');
+        }, 3000);
+    }
+</script>
+```
+
 </body>
 </html>
-
-
